@@ -1,0 +1,807 @@
+[wilson@kafofonew bootcamp_sui]$ ls
+Move.toml  sources  tests
+[wilson@kafofonew bootcamp_sui]$ sui move build
+INCLUDING DEPENDENCY Bridge
+INCLUDING DEPENDENCY SuiSystem
+INCLUDING DEPENDENCY Sui
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING bootcamp_sui
+error[E03001]: address with no value
+  ┌─ ./sources/contador.move:1:8
+  │
+1 │ module contador::contador {
+  │        ^^^^^^^^ address 'contador' is not assigned a value. Try assigning it a value when calling the compiler
+
+warning[W09008]: unused function
+   ┌─ ./sources/contador.move:12:7
+   │
+12 │   fun new(target: u64): Counter {
+   │       ^^^ The non-'public', non-'entry' function 'new' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ ./sources/contador.move:34:7
+   │
+34 │   fun play_counter(counter: &mut Counter): () {
+   │       ^^^^^^^^^^^^ The non-'public', non-'entry' function 'play_counter' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+error[E03001]: address with no value
+  ┌─ ./sources/todo.move:1:8
+  │
+1 │ module exercicios::todo;
+[wilson@kafofonew bootcamp_sui]$ sui move build
+INCLUDING DEPENDENCY Bridge
+INCLUDING DEPENDENCY SuiSystem
+INCLUDING DEPENDENCY Sui
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING bootcamp_sui
+error[E03001]: address with no value
+  ┌─ ./sources/todo.move:1:8
+  │
+1 │ module exercicios::todo;
+  │        ^^^^^^^^^^ address 'exercicios' is not assigned a value. Try assigning it a value when calling the compiler
+
+warning[Lint W99001]: non-composable transfer to sender
+   ┌─ ./sources/todo.move:16:5
+   │
+10 │ public fun new(ctx: &mut TxContext){
+   │            --- Returning an object from a function, allows a caller to use the object and enables composability via programmable transactions.
+   ·
+16 │     transfer::transfer(list, tx_context::sender(ctx));
+   │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   │     │                        │
+   │     │                        Transaction sender address coming from here
+   │     Transfer of an object to transaction sender address
+   │
+   = This warning can be suppressed with '#[allow(lint(self_transfer))]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+[wilson@kafofonew bootcamp_sui]$ sui move build
+INCLUDING DEPENDENCY Bridge
+INCLUDING DEPENDENCY SuiSystem
+INCLUDING DEPENDENCY Sui
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING bootcamp_sui
+warning[Lint W99001]: non-composable transfer to sender
+   ┌─ ./sources/todo.move:16:5
+   │
+10 │ public fun new(ctx: &mut TxContext){
+   │            --- Returning an object from a function, allows a caller to use the object and enables composability via programmable transactions.
+   ·
+16 │     transfer::transfer(list, tx_context::sender(ctx));
+   │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   │     │                        │
+   │     │                        Transaction sender address coming from here
+   │     Transfer of an object to transaction sender address
+   │
+   = This warning can be suppressed with '#[allow(lint(self_transfer))]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ ./sources/contador.move:12:7
+   │
+12 │   fun new(target: u64): Counter {
+   │       ^^^ The non-'public', non-'entry' function 'new' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ ./sources/contador.move:34:7
+   │
+34 │   fun play_counter(counter: &mut Counter): () {
+   │       ^^^^^^^^^^^^ The non-'public', non-'entry' function 'play_counter' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+Please report feedback on the linter warnings at https://forums.sui.io
+
+[wilson@kafofonew bootcamp_sui]$ sui client envs
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+╭─────────┬─────────────────────────────────────┬────────╮
+│ alias   │ url                                 │ active │
+├─────────┼─────────────────────────────────────┼────────┤
+│ testnet │ https://fullnode.testnet.sui.io:443 │ *      │
+│ devnet  │ https://fullnode.devnet.sui.io:443  │        │
+│ mainnet │ https://fullnode.mainnet.sui.io:443 │        │
+╰─────────┴─────────────────────────────────────┴────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client publish
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+[Note]: Dependency sources are no longer verified automatically during publication and upgrade. You can pass the `--verify-deps` option if you would 
+like to verify them as part of publication or upgrade.
+INCLUDING DEPENDENCY Bridge
+INCLUDING DEPENDENCY SuiSystem
+INCLUDING DEPENDENCY Sui
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING bootcamp_sui
+warning[Lint W99001]: non-composable transfer to sender
+   ┌─ /home/wilson/Projects/Sui/bootcamp_sui/sources/todo.move:16:5
+   │
+10 │ public fun new(ctx: &mut TxContext){
+   │            --- Returning an object from a function, allows a caller to use the object and enables composability via programmable transactions.
+   ·
+16 │     transfer::transfer(list, tx_context::sender(ctx));
+   │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   │     │                        │
+   │     │                        Transaction sender address coming from here
+   │     Transfer of an object to transaction sender address
+   │
+   = This warning can be suppressed with '#[allow(lint(self_transfer))]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ /home/wilson/Projects/Sui/bootcamp_sui/sources/contador.move:12:7
+   │
+12 │   fun new(target: u64): Counter {
+   │       ^^^ The non-'public', non-'entry' function 'new' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ /home/wilson/Projects/Sui/bootcamp_sui/sources/contador.move:34:7
+   │
+34 │   fun play_counter(counter: &mut Counter): () {
+   │       ^^^^^^^^^^^^ The non-'public', non-'entry' function 'play_counter' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+Please report feedback on the linter warnings at https://forums.sui.io
+
+Skipping dependency verification
+Transaction Digest: H9vGfGzPreSnfk6kzFPsV2THnVFSgJFfLGGSVFvofPh
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Data                                                                                             │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                                   │
+│ Gas Owner: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                                │
+│ Gas Budget: 21022800 MIST                                                                                    │
+│ Gas Price: 1000 MIST                                                                                         │
+│ Gas Payment:                                                                                                 │
+│  ┌──                                                                                                         │
+│  │ ID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                                    │
+│  │ Version: 349180951                                                                                        │
+│  │ Digest: 3wDusdSNaoJXgWzD19sgRKry6y54ZjB8gnkjRLr4LFXP                                                      │
+│  └──                                                                                                         │
+│                                                                                                              │
+│ Transaction Kind: Programmable                                                                               │
+│ ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ Input Objects                                                                                            │ │
+│ ├──────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ 0   Pure Arg: Type: address, Value: "0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c" │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭─────────────────────────────────────────────────────────────────────────╮                                  │
+│ │ Commands                                                                │                                  │
+│ ├─────────────────────────────────────────────────────────────────────────┤                                  │
+│ │ 0  Publish:                                                             │                                  │
+│ │  ┌                                                                      │                                  │
+│ │  │ Dependencies:                                                        │                                  │
+│ │  │   0x0000000000000000000000000000000000000000000000000000000000000001 │                                  │
+│ │  │   0x0000000000000000000000000000000000000000000000000000000000000002 │                                  │
+│ │  └                                                                      │                                  │
+│ │                                                                         │                                  │
+│ │ 1  TransferObjects:                                                     │                                  │
+│ │  ┌                                                                      │                                  │
+│ │  │ Arguments:                                                           │                                  │
+│ │  │   Result 0                                                           │                                  │
+│ │  │ Address: Input  0                                                    │                                  │
+│ │  └                                                                      │                                  │
+│ ╰─────────────────────────────────────────────────────────────────────────╯                                  │
+│                                                                                                              │
+│ Signatures:                                                                                                  │
+│    rocJntDaF+Vb3kI4r5iQHRa9YDyZ1WctLCAqo7IR+emeA32tdaFOFgGrb6g4oSFoEG49LMy4yDKtpc71uTvBBg==                  │
+│                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Effects                                                                               │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Digest: H9vGfGzPreSnfk6kzFPsV2THnVFSgJFfLGGSVFvofPh                                               │
+│ Status: Success                                                                                   │
+│ Executed Epoch: 918                                                                               │
+│                                                                                                   │
+│ Created Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0x9364b5b6990524581d7a7696817404e9804427eaac97f0f3237f78aa39994998                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 349180952                                                                             │
+│  │ Digest: AQr2BmCJ4fU87jGjg77Lq29RvyUWMtgr8dq1wyXqKoXX                                           │
+│  └──                                                                                              │
+│  ┌──                                                                                              │
+│  │ ID: 0x9f6618a7bef52f5496334fc9c4296e52491ef8e6078cd921694a425bd90ef821                         │
+│  │ Owner: Immutable                                                                               │
+│  │ Version: 1                                                                                     │
+│  │ Digest: DgvsXi4rwi9MzZXBuyKfSJF55TVn9nCCS11AfZoUaHjE                                           │
+│  └──                                                                                              │
+│ Mutated Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 349180952                                                                             │
+│  │ Digest: 7wiS9Ro3MaKK8Xr8KX228XoBZfbTdCRtLctUiRmQfyEZ                                           │
+│  └──                                                                                              │
+│ Gas Object:                                                                                       │
+│  ┌──                                                                                              │
+│  │ ID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 349180952                                                                             │
+│  │ Digest: 7wiS9Ro3MaKK8Xr8KX228XoBZfbTdCRtLctUiRmQfyEZ                                           │
+│  └──                                                                                              │
+│ Gas Cost Summary:                                                                                 │
+│    Storage Cost: 19022800 MIST                                                                    │
+│    Computation Cost: 1000000 MIST                                                                 │
+│    Storage Rebate: 978120 MIST                                                                    │
+│    Non-refundable Storage Fee: 9880 MIST                                                          │
+│                                                                                                   │
+│ Transaction Dependencies:                                                                         │
+│    DJMfDQYMWNSNrqgBZoZJdVmuWPgUJWBiHvdUpK8VeJP4                                                   │
+│    Dd9pn1zFcSJjinxQewFd2gQdR4XKsHxFioD5MYnwLZQz                                                   │
+│    GppkRKgQ5ZXNWpCC3BTd9tXG4zF3ACacZK9Pu8eCvJiz                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────╮
+│ No transaction block events │
+╰─────────────────────────────╯
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Object Changes                                                                                   │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Created Objects:                                                                                 │
+│  ┌──                                                                                             │
+│  │ ObjectID: 0x9364b5b6990524581d7a7696817404e9804427eaac97f0f3237f78aa39994998                  │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                    │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c ) │
+│  │ ObjectType: 0x2::package::UpgradeCap                                                          │
+│  │ Version: 349180952                                                                            │
+│  │ Digest: AQr2BmCJ4fU87jGjg77Lq29RvyUWMtgr8dq1wyXqKoXX                                          │
+│  └──                                                                                             │
+│ Mutated Objects:                                                                                 │
+│  ┌──                                                                                             │
+│  │ ObjectID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                  │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                    │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c ) │
+│  │ ObjectType: 0x2::coin::Coin<0x2::sui::SUI>                                                    │
+│  │ Version: 349180952                                                                            │
+│  │ Digest: 7wiS9Ro3MaKK8Xr8KX228XoBZfbTdCRtLctUiRmQfyEZ                                          │
+│  └──                                                                                             │
+│ Published Objects:                                                                               │
+│  ┌──                                                                                             │
+│  │ PackageID: 0x9f6618a7bef52f5496334fc9c4296e52491ef8e6078cd921694a425bd90ef821                 │
+│  │ Version: 1                                                                                    │
+│  │ Digest: DgvsXi4rwi9MzZXBuyKfSJF55TVn9nCCS11AfZoUaHjE                                          │
+│  │ Modules: contador, livros, todo                                                               │
+│  └──                                                                                             │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Balance Changes                                                                                   │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌──                                                                                              │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ CoinType: 0x2::sui::SUI                                                                        │
+│  │ Amount: -19044680                                                                              │
+│  └──                                                                                              │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client call --package 0x9364b5b6990524581d7a7696817404e9804427eaac97f0f3237f78aa39994998 --module todolist --fun
+ction new
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+Bcs field in object [0x9364b5b6990524581d7a7696817404e9804427eaac97f0f3237f78aa39994998] is missing or not a package.
+[wilson@kafofonew bootcamp_sui]$ sui client envs
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+╭─────────┬─────────────────────────────────────┬────────╮
+│ alias   │ url                                 │ active │
+├─────────┼─────────────────────────────────────┼────────┤
+│ testnet │ https://fullnode.testnet.sui.io:443 │ *      │
+│ devnet  │ https://fullnode.devnet.sui.io:443  │        │
+│ mainnet │ https://fullnode.mainnet.sui.io:443 │        │
+╰─────────┴─────────────────────────────────────┴────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client call --package 0x9f6618a7bef52f5496334fc9c4296e52491ef8e6078cd921694a425bd90ef821 --module todolist --fun
+ction new
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+Module not found in package: todolist.
+[wilson@kafofonew bootcamp_sui]$ sui client call --package 0x9f6618a7bef52f5496334fc9c4296e52491ef8e6078cd921694a425bd90ef821 --module todo --functio
+n new
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+Transaction Digest: DkfUBc1sHomaXSj2HStTDBbwAp5G3pe5QCDpyicvZ1Wz
+╭─────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Data                                                                            │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                  │
+│ Gas Owner: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c               │
+│ Gas Budget: 4280000 MIST                                                                    │
+│ Gas Price: 1000 MIST                                                                        │
+│ Gas Payment:                                                                                │
+│  ┌──                                                                                        │
+│  │ ID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                   │
+│  │ Version: 349180952                                                                       │
+│  │ Digest: 7wiS9Ro3MaKK8Xr8KX228XoBZfbTdCRtLctUiRmQfyEZ                                     │
+│  └──                                                                                        │
+│                                                                                             │
+│ Transaction Kind: Programmable                                                              │
+│   No input objects for this transaction                                                     │
+│ ╭──────────────────────────────────────────────────────────────────────────────────╮        │
+│ │ Commands                                                                         │        │
+│ ├──────────────────────────────────────────────────────────────────────────────────┤        │
+│ │ 0  MoveCall:                                                                     │        │
+│ │  ┌                                                                               │        │
+│ │  │ Function:  new                                                                │        │
+│ │  │ Module:    todo                                                               │        │
+│ │  │ Package:   0x9f6618a7bef52f5496334fc9c4296e52491ef8e6078cd921694a425bd90ef821 │        │
+│ │  └                                                                               │        │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯        │
+│                                                                                             │
+│ Signatures:                                                                                 │
+│    eR2qqaplv+mW2YiwKON4jvY3bjVx6DF5uQ5tIJNKDGLEijX/zwnoTLHEjVaWKa2fFgMsmqhmSvTfoaxpezv7DQ== │
+│                                                                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Effects                                                                               │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Digest: DkfUBc1sHomaXSj2HStTDBbwAp5G3pe5QCDpyicvZ1Wz                                              │
+│ Status: Success                                                                                   │
+│ Executed Epoch: 918                                                                               │
+│                                                                                                   │
+│ Created Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0xd5866e381489d47b44752a4bb88fecde7aeca68ac4ceb2d72a50ba6b48afed90                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 349180953                                                                             │
+│  │ Digest: DuGtJHPoXDsEM1HkB1HGj2rGhRivfUBAG6JDMk3SCLDi                                           │
+│  └──                                                                                              │
+│ Mutated Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 349180953                                                                             │
+│  │ Digest: 9DtuztqmnQujKyBDCHrEo6mh15phQeixGNouhaMx933f                                           │
+│  └──                                                                                              │
+│ Gas Object:                                                                                       │
+│  ┌──                                                                                              │
+│  │ ID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 349180953                                                                             │
+│  │ Digest: 9DtuztqmnQujKyBDCHrEo6mh15phQeixGNouhaMx933f                                           │
+│  └──                                                                                              │
+│ Gas Cost Summary:                                                                                 │
+│    Storage Cost: 2280000 MIST                                                                     │
+│    Computation Cost: 1000000 MIST                                                                 │
+│    Storage Rebate: 978120 MIST                                                                    │
+│    Non-refundable Storage Fee: 9880 MIST                                                          │
+│                                                                                                   │
+│ Transaction Dependencies:                                                                         │
+│    H9vGfGzPreSnfk6kzFPsV2THnVFSgJFfLGGSVFvofPh                                                    │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────╮
+│ No transaction block events │
+╰─────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Object Changes                                                                                     │
+├────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Created Objects:                                                                                   │
+│  ┌──                                                                                               │
+│  │ ObjectID: 0xd5866e381489d47b44752a4bb88fecde7aeca68ac4ceb2d72a50ba6b48afed90                    │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                      │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )   │
+│  │ ObjectType: 0x9f6618a7bef52f5496334fc9c4296e52491ef8e6078cd921694a425bd90ef821::todo::TodoList  │
+│  │ Version: 349180953                                                                              │
+│  │ Digest: DuGtJHPoXDsEM1HkB1HGj2rGhRivfUBAG6JDMk3SCLDi                                            │
+│  └──                                                                                               │
+│ Mutated Objects:                                                                                   │
+│  ┌──                                                                                               │
+│  │ ObjectID: 0xa58182ccf2bde63a3e4d6f6663d6131b0142a7cfa0fa5b74219745952b0a0e29                    │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                      │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )   │
+│  │ ObjectType: 0x2::coin::Coin<0x2::sui::SUI>                                                      │
+│  │ Version: 349180953                                                                              │
+│  │ Digest: 9DtuztqmnQujKyBDCHrEo6mh15phQeixGNouhaMx933f                                            │
+│  └──                                                                                               │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Balance Changes                                                                                   │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌──                                                                                              │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ CoinType: 0x2::sui::SUI                                                                        │
+│  │ Amount: -2301880                                                                               │
+│  └──                                                                                              │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+[wilson@kafofonew bootcamp_sui]$ sui-move-analyzer ^Chelp
+[wilson@kafofonew bootcamp_sui]$ sui keytool --help
+Sui keystore tool
+
+Usage: sui keytool [OPTIONS] <COMMAND>
+
+Commands:
+  update-alias                             Update an old alias to a new one. If a new alias is not provided, a random one will be generated
+  convert                                  Convert private key in Hex or Base64 to new format (Bech32 encoded 33 byte flag || private key
+                                               starting with "suiprivkey"). Hex private key format import and export are both deprecated in Sui
+                                               Wallet and Sui CLI Keystore. Use `sui keytool import` if you wish to import a key to Sui Keystore
+  decode-or-verify-tx                      Given a Base64 encoded transaction bytes, decode its components. If a signature is provided, verify
+                                               the signature against the transaction and output the result
+  decode-multi-sig                         Given a Base64 encoded MultiSig signature, decode its components. If tx_bytes is passed in, verify the
+                                               multisig
+  generate                                 Generate a new keypair with key scheme flag {ed25519 | secp256k1 | secp256r1} with optional derivation
+                                               path, default to m/44'/784'/0'/0'/0' for ed25519 or m/54'/784'/0'/0/0 for secp256k1 or
+                                               m/74'/784'/0'/0/0 for secp256r1. Word length can be { word12 | word15 | word18 | word21 | word24}
+                                               default to word12 if not specified
+  import                                   Add a new key to Sui CLI Keystore using either the input mnemonic phrase or a Bech32 encoded 33-byte
+                                               `flag || privkey` starting with "suiprivkey", the key scheme flag {ed25519 | secp256k1 | secp256r1}
+                                               and an optional derivation path, default to m/44'/784'/0'/0'/0' for ed25519 or m/54'/784'/0'/0/0 for
+                                               secp256k1 or m/74'/784'/0'/0/0 for secp256r1. Supports mnemonic phrase of word length 12, 15, 18, 21,
+                                               24. Set an alias for the key with the --alias flag. If no alias is provided, the tool will
+                                               automatically generate one
+  export                                   Output the private key of the given key identity in Sui CLI Keystore as Bech32 encoded string starting
+                                               with `suiprivkey`
+  list                                     List all keys by its Sui address, Base64 encoded public key, key scheme name in sui.keystore
+  load-keypair                             This reads the content at the provided file path. The accepted format can be [enum SuiKeyPair] (Base64
+                                               encoded of 33-byte `flag || privkey`) or `type AuthorityKeyPair` (Base64 encoded `privkey`). This
+                                               prints out the account keypair as Base64 encoded `flag || privkey`, the network keypair, worker
+                                               keypair, protocol keypair as Base64 encoded `privkey`
+  multi-sig-address                        To MultiSig Sui Address. Pass in a list of all public keys `flag || pk` in Base64. See `keytool list`
+                                               for example public keys
+  multi-sig-combine-partial-sig            Provides a list of participating signatures (`flag || sig || pk` encoded in Base64), threshold, a list
+                                               of all public keys and a list of their weights that define the MultiSig address. Returns a valid
+                                               MultiSig signature and its sender address. The result can be used as signature field for `sui client
+                                               execute-signed-tx`. The sum of weights of all signatures must be >= the threshold
+  multi-sig-combine-partial-sig-legacy     
+  show                                     Read the content at the provided file path. The accepted format can be [enum SuiKeyPair] (Base64
+                                               encoded of 33-byte `flag || privkey`) or `type AuthorityKeyPair` (Base64 encoded `privkey`). It prints
+                                               its Base64 encoded public key and the key scheme flag
+  sign                                     Create signature using the private key for the given address (or its alias) in sui keystore. Any
+                                               signature commits to a [struct IntentMessage] consisting of the Base64 encoded of the BCS serialized
+                                               transaction bytes itself and its intent. If intent is absent, default will be used
+  sign-kms                                 Creates a signature by leveraging AWS KMS. Pass in a key-id to leverage Amazon KMS to sign a message
+                                               and the base64 pubkey. Generate PubKey from pem using MystenLabs/base64pemkey Any signature commits to
+                                               a [struct IntentMessage] consisting of the Base64 encoded of the BCS serialized transaction bytes
+                                               itself and its intent. If intent is absent, default will be used
+  unpack                                   This takes [enum SuiKeyPair] of Base64 encoded of 33-byte `flag || privkey`). It outputs the keypair
+                                               into a file at the current directory where the address is the filename, and prints out its Sui
+                                               address, Base64 encoded public key, the key scheme, and the key scheme flag
+  zk-login-sign-and-execute-tx             Given the max_epoch, generate an OAuth url, ask user to paste the redirect with id_token, call salt
+                                               server, then call the prover server, create a test transaction, use the ephemeral key to sign and
+                                               execute it by assembling to a serialized zkLogin signature
+  zk-login-enter-token                     A workaround to the above command because sometimes token pasting does not work (for Facebook). All
+                                               the inputs required here are printed from the command above
+  zk-login-sig-verify                      Given a zkLogin signature, parse it if valid. If `bytes` provided, parse it as either as
+                                               TransactionData or PersonalMessage based on `intent_scope`. It verifies the zkLogin signature based
+                                               its latest JWK fetched. Example request: sui keytool zk-login-sig-verify --sig $SERIALIZED_ZKLOGIN_SIG
+                                               --bytes $BYTES --intent-scope 0 --network devnet --curr-epoch 10
+  zk-login-insecure-sign-personal-message  TESTING ONLY: Generate a fixed ephemeral key and its JWT token with test issuer. Produce a zklogin
+                                               signature for the given data and max epoch. e.g. sui keytool zk-login-insecure-sign-personal-message
+                                               --data "hello" --max-epoch 5
+  help                                     Print this message or the help of the given subcommand(s)
+
+Options:
+      --keystore-path <KEYSTORE_PATH>  
+      --json                           Return command outputs in json format
+  -h, --help                           Print help
+  -V, --version                        Print version
+[wilson@kafofonew bootcamp_sui]$ sui client envs
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+╭─────────┬─────────────────────────────────────┬────────╮
+│ alias   │ url                                 │ active │
+├─────────┼─────────────────────────────────────┼────────┤
+│ testnet │ https://fullnode.testnet.sui.io:443 │ *      │
+│ devnet  │ https://fullnode.devnet.sui.io:443  │        │
+│ mainnet │ https://fullnode.mainnet.sui.io:443 │        │
+╰─────────┴─────────────────────────────────────┴────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client switch --env mainnet
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.0
+Active environment switched to [mainnet]
+[wilson@kafofonew bootcamp_sui]$ sui client envs
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+╭─────────┬─────────────────────────────────────┬────────╮
+│ alias   │ url                                 │ active │
+├─────────┼─────────────────────────────────────┼────────┤
+│ testnet │ https://fullnode.testnet.sui.io:443 │        │
+│ devnet  │ https://fullnode.devnet.sui.io:443  │        │
+│ mainnet │ https://fullnode.mainnet.sui.io:443 │ *      │
+╰─────────┴─────────────────────────────────────┴────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client active-address
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c
+[wilson@kafofonew bootcamp_sui]$ sui client balance
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+No coins found for this address.
+[wilson@kafofonew bootcamp_sui]$ sui client balance
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+╭────────────────────────────────────────╮
+│ Balance of coins owned by this address │
+├────────────────────────────────────────┤
+│ ╭─────────────────────────────────╮    │
+│ │ coin  balance (raw)  balance    │    │
+│ ├─────────────────────────────────┤    │
+│ │ Sui   100000000      0.10 SUI   │    │
+│ ╰─────────────────────────────────╯    │
+╰────────────────────────────────────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client publish
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+[Note]: Dependency sources are no longer verified automatically during publication and upgrade. You can pass the `--verify-deps` option if you would 
+like to verify them as part of publication or upgrade.
+INCLUDING DEPENDENCY Bridge
+INCLUDING DEPENDENCY SuiSystem
+INCLUDING DEPENDENCY Sui
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING bootcamp_sui
+warning[Lint W99001]: non-composable transfer to sender
+   ┌─ /home/wilson/Projects/Sui/bootcamp_sui/sources/todo.move:16:5
+   │
+10 │ public fun new(ctx: &mut TxContext){
+   │            --- Returning an object from a function, allows a caller to use the object and enables composability via programmable transactions.
+   ·
+16 │     transfer::transfer(list, tx_context::sender(ctx));
+   │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   │     │                        │
+   │     │                        Transaction sender address coming from here
+   │     Transfer of an object to transaction sender address
+   │
+   = This warning can be suppressed with '#[allow(lint(self_transfer))]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ /home/wilson/Projects/Sui/bootcamp_sui/sources/contador.move:12:7
+   │
+12 │   fun new(target: u64): Counter {
+   │       ^^^ The non-'public', non-'entry' function 'new' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+warning[W09008]: unused function
+   ┌─ /home/wilson/Projects/Sui/bootcamp_sui/sources/contador.move:34:7
+   │
+34 │   fun play_counter(counter: &mut Counter): () {
+   │       ^^^^^^^^^^^^ The non-'public', non-'entry' function 'play_counter' is never called. Consider removing it.
+   │
+   = This warning can be suppressed with '#[allow(unused_function)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
+
+Please report feedback on the linter warnings at https://forums.sui.io
+
+Skipping dependency verification
+Transaction Digest: HQ2dg4LDrCqRm5stXUepxSdhV1FeRccvtN4BqnGBd6F1
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Data                                                                                             │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                                   │
+│ Gas Owner: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                                │
+│ Gas Budget: 20022800 MIST                                                                                    │
+│ Gas Price: 500 MIST                                                                                          │
+│ Gas Payment:                                                                                                 │
+│  ┌──                                                                                                         │
+│  │ ID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                                    │
+│  │ Version: 682548000                                                                                        │
+│  │ Digest: 6qiAGpJMnQ8LPdmCgpUcySFLP88rLRvLhA61wRaDUEDe                                                      │
+│  └──                                                                                                         │
+│                                                                                                              │
+│ Transaction Kind: Programmable                                                                               │
+│ ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────╮ │
+│ │ Input Objects                                                                                            │ │
+│ ├──────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │
+│ │ 0   Pure Arg: Type: address, Value: "0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c" │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭─────────────────────────────────────────────────────────────────────────╮                                  │
+│ │ Commands                                                                │                                  │
+│ ├─────────────────────────────────────────────────────────────────────────┤                                  │
+│ │ 0  Publish:                                                             │                                  │
+│ │  ┌                                                                      │                                  │
+│ │  │ Dependencies:                                                        │                                  │
+│ │  │   0x0000000000000000000000000000000000000000000000000000000000000001 │                                  │
+│ │  │   0x0000000000000000000000000000000000000000000000000000000000000002 │                                  │
+│ │  └                                                                      │                                  │
+│ │                                                                         │                                  │
+│ │ 1  TransferObjects:                                                     │                                  │
+│ │  ┌                                                                      │                                  │
+│ │  │ Arguments:                                                           │                                  │
+│ │  │   Result 0                                                           │                                  │
+│ │  │ Address: Input  0                                                    │                                  │
+│ │  └                                                                      │                                  │
+│ ╰─────────────────────────────────────────────────────────────────────────╯                                  │
+│                                                                                                              │
+│ Signatures:                                                                                                  │
+│    8nVY2OyrxeCVP3GIqOh/jKM16CrQ8jOLlXGQPbB6Jc9QXEflOMaf9HDxupP0myJ718+4XyVWlyg3Ia8XpuaoBw==                  │
+│                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Effects                                                                               │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Digest: HQ2dg4LDrCqRm5stXUepxSdhV1FeRccvtN4BqnGBd6F1                                              │
+│ Status: Success                                                                                   │
+│ Executed Epoch: 947                                                                               │
+│                                                                                                   │
+│ Created Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0x388750ccc5bb5b792fa986b296f4cc86194e724d99e4a112d3687ff2e3249453                         │
+│  │ Owner: Immutable                                                                               │
+│  │ Version: 1                                                                                     │
+│  │ Digest: 7rM83fBzK2op5rW4QajrTSbjiRwskg1JMFy3Xnxt2UWh                                           │
+│  └──                                                                                              │
+│  ┌──                                                                                              │
+│  │ ID: 0x39bb28aab8e976a8147dd8eabd17ba9c28ed3fd49684d3e12fa6c880f8f748de                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 682548001                                                                             │
+│  │ Digest: CqcweZcWDnMVYkjhu72Y7fFxoutvhFYRmDYqqwae3rut                                           │
+│  └──                                                                                              │
+│ Mutated Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 682548001                                                                             │
+│  │ Digest: 7Dx4RkwXkEP5QET6kHSFZUvcjBeW1c2aSJHqiaN7sX9P                                           │
+│  └──                                                                                              │
+│ Gas Object:                                                                                       │
+│  ┌──                                                                                              │
+│  │ ID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 682548001                                                                             │
+│  │ Digest: 7Dx4RkwXkEP5QET6kHSFZUvcjBeW1c2aSJHqiaN7sX9P                                           │
+│  └──                                                                                              │
+│ Gas Cost Summary:                                                                                 │
+│    Storage Cost: 19022800 MIST                                                                    │
+│    Computation Cost: 500000 MIST                                                                  │
+│    Storage Rebate: 978120 MIST                                                                    │
+│    Non-refundable Storage Fee: 9880 MIST                                                          │
+│                                                                                                   │
+│ Transaction Dependencies:                                                                         │
+│    yqtELKLqAuSGkt6PX52KHKvmDKCrV3KCLxm6HAqL6DZ                                                    │
+│    7GDTPG7iFaUCXLpNmsWcqWxd2Ew4E3mGQ71sbPfngqTF                                                   │
+│    HgNZBJfnTbN1cfmb8juxQ9Nf68uxSqf1iHX7TqkUcTRi                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────╮
+│ No transaction block events │
+╰─────────────────────────────╯
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Object Changes                                                                                   │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Created Objects:                                                                                 │
+│  ┌──                                                                                             │
+│  │ ObjectID: 0x39bb28aab8e976a8147dd8eabd17ba9c28ed3fd49684d3e12fa6c880f8f748de                  │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                    │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c ) │
+│  │ ObjectType: 0x2::package::UpgradeCap                                                          │
+│  │ Version: 682548001                                                                            │
+│  │ Digest: CqcweZcWDnMVYkjhu72Y7fFxoutvhFYRmDYqqwae3rut                                          │
+│  └──                                                                                             │
+│ Mutated Objects:                                                                                 │
+│  ┌──                                                                                             │
+│  │ ObjectID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                  │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                    │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c ) │
+│  │ ObjectType: 0x2::coin::Coin<0x2::sui::SUI>                                                    │
+│  │ Version: 682548001                                                                            │
+│  │ Digest: 7Dx4RkwXkEP5QET6kHSFZUvcjBeW1c2aSJHqiaN7sX9P                                          │
+│  └──                                                                                             │
+│ Published Objects:                                                                               │
+│  ┌──                                                                                             │
+│  │ PackageID: 0x388750ccc5bb5b792fa986b296f4cc86194e724d99e4a112d3687ff2e3249453                 │
+│  │ Version: 1                                                                                    │
+│  │ Digest: 7rM83fBzK2op5rW4QajrTSbjiRwskg1JMFy3Xnxt2UWh                                          │
+│  │ Modules: contador, livros, todo                                                               │
+│  └──                                                                                             │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Balance Changes                                                                                   │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌──                                                                                              │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ CoinType: 0x2::sui::SUI                                                                        │
+│  │ Amount: -18544680                                                                              │
+│  └──                                                                                              │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client call --package 0x388750ccc5bb5b792fa986b296f4cc86194e724d99e4a112d3687ff2e3249453 --module todolist --fun
+ction new
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+Module not found in package: todolist.
+[wilson@kafofonew bootcamp_sui]$ sui client call --package 0x388750ccc5bb5b792fa986b296f4cc86194e724d99e4a112d3687ff2e3249453 --module todo --functio
+n new
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+Transaction Digest: EqvTTZx3WeYczZ8QwNZFVxNk2AC8WjvW3keBEdGp2oWK
+╭─────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Data                                                                            │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                  │
+│ Gas Owner: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c               │
+│ Gas Budget: 3280000 MIST                                                                    │
+│ Gas Price: 500 MIST                                                                         │
+│ Gas Payment:                                                                                │
+│  ┌──                                                                                        │
+│  │ ID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                   │
+│  │ Version: 682548001                                                                       │
+│  │ Digest: 7Dx4RkwXkEP5QET6kHSFZUvcjBeW1c2aSJHqiaN7sX9P                                     │
+│  └──                                                                                        │
+│                                                                                             │
+│ Transaction Kind: Programmable                                                              │
+│   No input objects for this transaction                                                     │
+│ ╭──────────────────────────────────────────────────────────────────────────────────╮        │
+│ │ Commands                                                                         │        │
+│ ├──────────────────────────────────────────────────────────────────────────────────┤        │
+│ │ 0  MoveCall:                                                                     │        │
+│ │  ┌                                                                               │        │
+│ │  │ Function:  new                                                                │        │
+│ │  │ Module:    todo                                                               │        │
+│ │  │ Package:   0x388750ccc5bb5b792fa986b296f4cc86194e724d99e4a112d3687ff2e3249453 │        │
+│ │  └                                                                               │        │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯        │
+│                                                                                             │
+│ Signatures:                                                                                 │
+│    KNVG4OIL4IgaOC77NEk3mcvtfPQCz5iY/ZtgYJZLbDhP9bzeFg1RPqhdhB52cMhehj3+mDuF+OmCi+4w/rl3Aw== │
+│                                                                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Effects                                                                               │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Digest: EqvTTZx3WeYczZ8QwNZFVxNk2AC8WjvW3keBEdGp2oWK                                              │
+│ Status: Success                                                                                   │
+│ Executed Epoch: 947                                                                               │
+│                                                                                                   │
+│ Created Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0xeeb3a58430d38beccd4e3279776a2e00bd044ad22d62fae61f16ef186eca1add                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 682548002                                                                             │
+│  │ Digest: 9JqJQE8z4znPrKT8Pt9UGNQwhbennfCsnF1rDXtJAWcg                                           │
+│  └──                                                                                              │
+│ Mutated Objects:                                                                                  │
+│  ┌──                                                                                              │
+│  │ ID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 682548002                                                                             │
+│  │ Digest: EHmfbFtg67TZVp5HuQ2jPZD71k3aW5Kb5VvDeGuSbEip                                           │
+│  └──                                                                                              │
+│ Gas Object:                                                                                       │
+│  ┌──                                                                                              │
+│  │ ID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                         │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ Version: 682548002                                                                             │
+│  │ Digest: EHmfbFtg67TZVp5HuQ2jPZD71k3aW5Kb5VvDeGuSbEip                                           │
+│  └──                                                                                              │
+│ Gas Cost Summary:                                                                                 │
+│    Storage Cost: 2280000 MIST                                                                     │
+│    Computation Cost: 500000 MIST                                                                  │
+│    Storage Rebate: 978120 MIST                                                                    │
+│    Non-refundable Storage Fee: 9880 MIST                                                          │
+│                                                                                                   │
+│ Transaction Dependencies:                                                                         │
+│    HQ2dg4LDrCqRm5stXUepxSdhV1FeRccvtN4BqnGBd6F1                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────╮
+│ No transaction block events │
+╰─────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Object Changes                                                                                     │
+├────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Created Objects:                                                                                   │
+│  ┌──                                                                                               │
+│  │ ObjectID: 0xeeb3a58430d38beccd4e3279776a2e00bd044ad22d62fae61f16ef186eca1add                    │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                      │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )   │
+│  │ ObjectType: 0x388750ccc5bb5b792fa986b296f4cc86194e724d99e4a112d3687ff2e3249453::todo::TodoList  │
+│  │ Version: 682548002                                                                              │
+│  │ Digest: 9JqJQE8z4znPrKT8Pt9UGNQwhbennfCsnF1rDXtJAWcg                                            │
+│  └──                                                                                               │
+│ Mutated Objects:                                                                                   │
+│  ┌──                                                                                               │
+│  │ ObjectID: 0xbfd2d1acf75f7ac5e267317d3f34d2823271bd3c0cf6f83f52a518eb8013a083                    │
+│  │ Sender: 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c                      │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )   │
+│  │ ObjectType: 0x2::coin::Coin<0x2::sui::SUI>                                                      │
+│  │ Version: 682548002                                                                              │
+│  │ Digest: EHmfbFtg67TZVp5HuQ2jPZD71k3aW5Kb5VvDeGuSbEip                                            │
+│  └──                                                                                               │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Balance Changes                                                                                   │
+├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌──                                                                                              │
+│  │ Owner: Account Address ( 0x72a3b313649b23ecc2dc04c7035824121ef0e1df47e1ae2bfe797489a32dbb0c )  │
+│  │ CoinType: 0x2::sui::SUI                                                                        │
+│  │ Amount: -1801880                                                                               │
+│  └──                                                                                              │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+[wilson@kafofonew bootcamp_sui]$ sui client balance
+[warning] Client/Server api version mismatch, client api version : 1.59.1, server api version : 1.60.1
+╭────────────────────────────────────────╮
+│ Balance of coins owned by this address │
+├────────────────────────────────────────┤
+│ ╭─────────────────────────────────╮    │
+│ │ coin  balance (raw)  balance    │    │
+│ ├─────────────────────────────────┤    │
+│ │ Sui   79653440       0.07 SUI   │    │
+│ ╰─────────────────────────────────╯    │
+╰────────────────────────────────────────╯
+[wilson@kafofonew bootcamp_sui]$ 
